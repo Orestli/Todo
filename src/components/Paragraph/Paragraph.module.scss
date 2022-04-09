@@ -1,0 +1,19 @@
+.paragraph {
+  padding: 0 10px;
+  margin: 0 5px 5px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+
+  color: #539bf5;
+  background-color: rgba(65, 132, 228, .15);
+
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all .1s;
+
+  &:hover {
+    color: #cdd9e5;
+    background-color: #316dca;
+  }
+}

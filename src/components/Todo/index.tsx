@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { getOneTodo } from '../../redux/reducers/TodosReducer/todosThunks';
@@ -13,7 +13,13 @@ const TodoPage: React.FC = () => {
   const { selected: todo } = useAppSelector((state) => state.todos);
 
   useEffect(() => {
-    dispatch(getOneTodo(Number(id)));
+    (async () => {
+      try {
+        await dispatch(getOneTodo(Number(id))).unwrap();
+      } catch (rejectedValueOrSerializedError) {
+        navigate('/todos');
+      }
+    })();
   }, []);
 
   const handleClick = () => {
@@ -25,7 +31,7 @@ const TodoPage: React.FC = () => {
       <button className={s.back_button} onClick={handleClick}>
         <img src={ArrowIcon} alt="Arrow Icon" />
       </button>
-      <div className="block" style={{ width: "100%" }}>
+      <div className="block" style={{ width: '100%' }}>
         <h1 className={s.title}>Text</h1>
         <p className={s.text}>{todo?.text}</p>
       </div>

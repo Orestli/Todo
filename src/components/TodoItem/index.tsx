@@ -2,11 +2,11 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { TodoResponse } from '../../utils/api/types';
 import { useField } from 'formik';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import CloseIcon from '../../media/icons/close-icon.svg';
 import EditIcon from '../../media/icons/edit-icon.svg';
 
 import s from './TodoItem.module.scss';
-import { Link } from 'react-router-dom';
 
 interface TodoItemProps {
   id: string;

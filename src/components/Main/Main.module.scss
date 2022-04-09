@@ -1,9 +1,11 @@
 .container {
+  max-width: 610px;
+  width: 100%;
   padding: 20px;
 
-  cursor: pointer;
   border: 1px solid #f2f2f2;
   border-radius: 15px;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .3);
 
   transition: all .2s;
 
@@ -16,11 +18,12 @@
   margin-top: 20px;
 
   display: grid;
-  column-gap: 20px;
+  gap: 20px;
   justify-items: center;
   grid-template-areas:
-          '. todos photos .'
-          '. instruments instruments .';
+          '. photos .'
+          '. todos .'
+          '. instruments .';
 }
 
 .title {
@@ -34,23 +37,63 @@
 
 .grid_todos {
   grid-area: todos;
-  max-width: 300px;
 }
 
 .grid_photos {
   grid-area: photos;
-  max-width: 300px;
 }
 
 .grid_instruments {
   grid-area: instruments;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.instruments_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.grid_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f2f2f2;
 }
 
 .text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.arrow_icon {
+  margin-left: 15px;
+}
+
+.button_link {
+  max-width: 120px;
+  margin: 20px auto 0;
+  padding: 10px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  outline: none;
+  border: 1px solid #539bf5;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px -5px rgb(0 0 0 / 30%);
+  background-color: transparent;
+
   transition: all .2s;
 
-  &:hover {
-    border-radius: 5px;
-    background-color: rgba(#66afe9, .3);
+  &:hover, &:focus {
+    border-color: #66afe9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06),
+    0 0 8px rgba(#007FFF, .4);
   }
 }

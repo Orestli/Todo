@@ -26,19 +26,21 @@ const PhotosPage: React.FC = () => {
         validationSchema={photosInput}
         enableReinitialize
       >
-        {({ touched, errors, values }) => (
+        {({ errors, values }) => (
           <Form className={s.search_container}>
             <h1 className={s.title}>Specify album id from 1 to 100</h1>
-            <div className={s.input_container}>
+            {errors.id && <p className={s.error_message}>{errors.id}</p>}
+            <div className={clsx(s.input_container)}>
               <Field
                 type="number"
                 name="id"
+                placeholder="1..."
                 className={clsx('text', s.search_input)}
               />
               <button
                 type="submit"
                 className={s.search_button}
-                disabled={values.id === lastId}
+                disabled={values.id === lastId || !!errors.id}
               >
                 <img src={SearchIcon} alt="Search Icon" />
               </button>
@@ -47,16 +49,18 @@ const PhotosPage: React.FC = () => {
         )}
       </Formik>
 
-      <div className={s.grid}>
-        {photos.map((photo) => (
-          <img
-            key={photo.id}
-            className={s.img_grid}
-            src={photo.thumbnailUrl}
-            alt="Album img"
-          />
-        ))}
-      </div>
+      {Object.keys(photos).length !== 0 && (
+        <div className={s.grid}>
+          {photos.map((photo) => (
+            <img
+              key={photo.id}
+              className={s.img_grid}
+              src={photo.thumbnailUrl}
+              alt="Album img"
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

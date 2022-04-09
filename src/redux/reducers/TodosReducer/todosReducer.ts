@@ -1,6 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TodoResponse } from '../../../utils/api/types';
-import { createTodo, removeTodo, getAllTodo, getOneTodo } from "./todosThunks";
+import {
+  createTodo,
+  removeTodo,
+  getAllTodo,
+  getOneTodo,
+  updateTodo,
+} from './todosThunks';
 
 interface ITodo {
   todos: TodoResponse[];
@@ -31,6 +37,14 @@ const todosReducer = createSlice({
         state.todos = state.todos.filter(
           (todo) => todo.id !== action.payload.id
         );
+      })
+      .addCase(updateTodo.fulfilled, (state, action) => {
+        state.todos.forEach((todo) => {
+          if (todo.id === action.payload.id) {
+            todo.text = action.payload.text;
+            todo.done = action.payload.done;
+          }
+        });
       });
   },
 });

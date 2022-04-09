@@ -1,6 +1,4 @@
 .error {
-  margin-bottom: 15px;
-
   color: #ff6b63;
   font-size: 14px;
   font-weight: 600;
@@ -10,6 +8,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -41,6 +45,62 @@
   transition: all .2s;
 
   &:hover, &:focus {
+    border-color: #66afe9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06),
+    0 0 8px rgba(#007FFF, .4);
+  }
+}
+
+.filter_container {
+  margin: 0 15px;
+  padding: 0 15px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.filter_block {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  transition: all .2s;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 70%;
+      margin-left: 10px;
+      background-color: #f2f2f2;
+    }
+  }
+
+  &:hover, &:focus {
+    button {
+      font-weight: 600;
+    }
+  }
+}
+
+.filter_button {
+  width: 100px;
+  padding: 10px 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+
+  outline: none;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .3);
+  background-color: transparent;
+
+  transition: all .2s;
+
+  &:hover {
     border-color: #66afe9;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06),
     0 0 8px rgba(#007FFF, .4);
