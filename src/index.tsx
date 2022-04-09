@@ -5,7 +5,7 @@ import { store } from './redux/store';
 import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-import './index.css';
+import './index.scss';
 
 // @ts-ignore
 const root = createRoot(document.getElementById('root'));
