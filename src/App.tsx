@@ -7,7 +7,7 @@ import HomePage from './components/Main';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Todo-list">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="todos" element={<TodosPage />} />
